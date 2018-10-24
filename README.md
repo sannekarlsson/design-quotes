@@ -1,4 +1,4 @@
-#Design Quotes
+# Design Quotes
 
 A responsive site displaying design quotes using the Quotes on Design API with the possibility of getting a summary about the author of the quote from Wikipedia.
 
