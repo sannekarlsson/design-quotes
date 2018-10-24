@@ -1,0 +1,59 @@
+{
+  "name": "design-quotes",
+  "version": "1.0.0",
+  "author": "Sanne Karlsson",
+  "description": "A design quote site using Quotes on Design and Wikipedia API's.",
+  "homepage": "https://sannekarlsson.github.io/design-quotes",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "parcel build src/index.html --detailed-report",
+    "deploy": "gh-pages -d dist",
+    "lint": "npm-run-all lint:*",
+    "lint:html": "html-validator --file=src/index.html --verbose",
+    "lint:js": "eslint ./src/scripts/*.js || exit 0",
+    "lint:scss": "stylelint ./src/styles/*.scss || exit 0",
+    "prebuild": "npm run lint && rm -rf dist",
+    "prestart": "rm -rf dev",
+    "start": "parcel src/index.html -d dev"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.2.1",
+    "babel-eslint": "^10.0.1",
+    "cssnano": "^4.1.6",
+    "eslint": "^5.7.0",
+    "gh-pages": "^2.0.1",
+    "npm-run-all": "^4.1.3",
+    "sass": "^1.14.3",
+    "stylelint": "^9.6.0",
+    "stylelint-config-standard": "^18.2.0"
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint"
+  },
+  "htmlnano": {
+    "removeComments": false
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": true
+    }
+  },
+  "stylelint": {
+    "extends": "stylelint-config-standard",
+    "rules": {
+      "at-rule-no-unknown": null,
+      "declaration-empty-line-before": "never",
+      "indentation": 4,
+      "no-eol-whitespace": [
+        true,
+        {
+          "ignore": [
+            "empty-lines"
+          ]
+        }
+      ],
+      "selector-list-comma-newline-after": "always-multi-line"
+    }
+  }
+}

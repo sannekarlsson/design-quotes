@@ -1,0 +1,104 @@
+// Loader animation
+
+$duration: 2.8s;
+$repeat: infinite;
+$bottom-scale: 0.2;
+$top-scale: 1;
+
+@mixin bubbling($progress) {
+    animation: $progress $duration $repeat;
+}
+
+@mixin dot_start {
+    opacity: 0;
+    transform: scale($bottom-scale) translate(-50%, -50%);
+}
+
+@mixin dot_end {
+    opacity: 0.8;
+    transform: scale($top-scale) translate(-50%, -50%);
+}
+
+%center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.loader {
+    @extend %center;
+    @extend %toggleLoaderAndQuote;
+    margin: 4rem 0 0;
+    opacity: 1;
+
+    .dot {
+        background: $olive;
+        border-radius: 50%;
+        opacity: 0;
+        position: absolute;
+    }
+
+    @for $i from 1 through 5 {
+        .dot:nth-child(#{$i}) {
+            @include bubbling(progress#{$i});
+            $size: $i * 15px;
+            height: $size;
+            width: $size;
+
+            @if $i % 2 == 0 {
+                background: $dusky-green;
+            }
+        }
+    }
+}
+
+@keyframes progress1 {
+    0%, 40% {
+        @include dot_start;
+    }
+
+    20% {
+        @include dot_end;
+    }
+}
+
+@keyframes progress2 {
+    20%, 60% {
+        @include dot_start;
+    }
+
+    40% {
+        @include dot_end;
+    }
+}
+
+@keyframes progress3 {
+    40%, 80% {
+        @include dot_start;
+    }
+
+    60% {
+        @include dot_end;
+    }
+}
+
+@keyframes progress4 {
+    60%, 100% {
+        @include dot_start;
+    }
+
+    80% {
+        @include dot_end;
+    }
+}
+
+@keyframes progress5 {
+    80%, 20% {
+        @include dot_start;
+    }
+
+    100% {
+        @include dot_end;
+    }
+}
