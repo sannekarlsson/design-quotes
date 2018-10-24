@@ -6,6 +6,7 @@
   "homepage": "https://sannekarlsson.github.io/design-quotes",
   "license": "MIT",
   "private": true,
+  "repository": "https://github.com/sannekarlsson/design-quotes",
   "scripts": {
     "build": "parcel build src/index.html --detailed-report",
     "deploy": "gh-pages -d dist",
