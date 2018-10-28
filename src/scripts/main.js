@@ -82,8 +82,8 @@ function fetchJson(request, callback) {
                 throw new Error(`Fetch response with status: ${response.status}.`);
             }
         })
-        .then((myJson) => {
-            callback(myJson);
+        .then((jsonObj) => {
+            callback(jsonObj);
         })
         .catch((error) => {
             console.error(`Sorry! Something went wrong with the request. ${error}`);

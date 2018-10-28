@@ -28,7 +28,7 @@ export function initQuote(jsonObj) {
 // Return a request url
 export function getQuoteRequest() {
     // Add a timestamp to get around the browser cache
-    let time = Math.round(new Date().getTime() / 1000);
+    let time = Math.round(Date.now() / 1000);
     let timestamp = '&timestamp=' + time;
     // Put them together to form a request url
     let request = aQuote.endpointUrl + aQuote.filter + timestamp;
