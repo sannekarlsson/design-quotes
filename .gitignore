@@ -7,3 +7,6 @@ node_modules
 # Parcel
 .cache
 dev
+
+# Misc
+info.txt
