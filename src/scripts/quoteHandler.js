@@ -1,8 +1,8 @@
 const aQuote = {
     element: document.querySelector('q'),
     author: document.querySelector('p.author'),
-    endpointUrl: 'https://quotesondesign.com/wp-json/posts',
-    filter: '?filter[orderby]=rand&filter[posts_per_page]=5',
+    endpointUrl: 'https://quotesondesign.com/wp-json/wp/v2/posts/',
+    filter: '?orderby=rand&posts_per_page=5',
 };
 
 // Insert the quote and its properties 
@@ -18,11 +18,11 @@ export function initQuote(jsonObj) {
 
     // Remove the p tags from the quote content.
     // Use innerHTML to display utf-8 characters correctly
-    let taggedQuote = jsonObj.content;
+    let taggedQuote = jsonObj.content.rendered;
     aQuote.element.innerHTML = taggedQuote.replace(/<\/?p>/g, '').trim();
 
     // Set up author's name
-    aQuote.author.innerHTML = jsonObj.title;
+    aQuote.author.innerHTML = jsonObj.title.rendered;
 }
 
 // Return a request url

@@ -55,7 +55,7 @@ function displayQuote(jsonObj) {
     initQuote(jsonObj);
     // Set the author as value of button
     // to fetch author wiki on future button click
-    author.button.value = jsonObj.title;
+    author.button.value = jsonObj.title.rendered;
 
     // Hide loader and show quote
     toggleLoaderAndQuote(0);
