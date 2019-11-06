@@ -8,7 +8,7 @@
   "private": true,
   "repository": "https://github.com/sannekarlsson/design-quotes",
   "scripts": {
-    "build": "parcel build src/index.html --detailed-report",
+    "build": "parcel build src/index.html --public-url . --detailed-report",
     "deploy": "gh-pages -d dist",
     "lint": "npm-run-all lint:*",
     "lint:js": "eslint ./src/scripts/*.js || exit 0",
