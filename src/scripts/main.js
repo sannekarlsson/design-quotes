@@ -6,14 +6,19 @@ import { clearWiki, displayWiki, getWikiSummaryUrl, noWikiFound, wiki }
 
 'use strict';
 
+// The default object needs to have the same structure as the json from the API call
 const quote = {
     button: document.querySelector('button[name="quote"]'),
     collection: [],
     container: document.querySelector('.quote-container'),
     default: {
-        content: 'Perfection is boring. Getting better is where all the fun is.',
+        content: {
+            rendered: 'Perfection is boring. Getting better is where all the fun is.'
+        },
         link: 'https://quotesondesign.com/dragos-roua/',
-        title: 'Dragos Roua'
+        title: {
+            rendered: 'Dragos Roua'
+        }
     },
 };
 
@@ -161,5 +166,5 @@ function displayError(errorElement) {
 
     setTimeout(() => {
         quote.container.removeChild(errorElement);
-    }, 6000);
+    }, 10000);
 }
