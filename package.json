@@ -1,6 +1,6 @@
 {
   "name": "design-quotes",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "author": "Sanne Karlsson",
   "description": "A design quote site using Quotes on Design and Wikipedia API's.",
   "private": true,
