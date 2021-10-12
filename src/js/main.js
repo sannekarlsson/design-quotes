@@ -1,4 +1,3 @@
-import '../styles/main.scss';
 import { createDots, toggleBubbling } from './loader.js';
 import { getQuoteRequest, initQuote } from './quoteHandler.js';
 import { clearWiki, displayWiki, getWikiSummaryUrl, noWikiFound, wiki }

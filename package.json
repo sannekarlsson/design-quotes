@@ -3,37 +3,49 @@
   "version": "2.0.0",
   "author": "Sanne Karlsson",
   "description": "A design quote site using Quotes on Design and Wikipedia API's.",
-  "homepage": "https://sannekarlsson.github.io/design-quotes",
-  "license": "MIT",
   "private": true,
-  "repository": "https://github.com/sannekarlsson/design-quotes",
+  "license": "MIT",
+  "homepage": "https://sannekarlsson.github.io/design-quotes",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sannekarlsson/design-quotes"
+  },
   "scripts": {
-    "build": "parcel build src/index.html --public-url . --detailed-report",
+    "build": "run-p html js scss assets",
+    "prebuild": "rm -rf dist/* && mkdir dist/js",
+    "assets": "cp -R src/assets/ dist/assets",
+    "html": "posthtml src/index.html -o dist",
+    "js": "rollup src/js/main.js --format iife | terser -o dist/js/main.js",
+    "scss": "sass src/scss/main.scss -s compressed | postcss -o dist/css/main.css",
     "deploy": "gh-pages -d dist",
-    "lint": "npm-run-all lint:*",
-    "lint:js": "eslint ./src/scripts/*.js || exit 0",
-    "prebuild": "npm run lint && rm -rf dist",
-    "prestart": "rm -rf dev",
-    "start": "parcel src/index.html -d dev"
+    "predeploy": "npm run build",
+    "serve": "browser-sync dist -w -b 'google chrome'"
   },
   "devDependencies": {
-    "autoprefixer": "^9.8.5",
-    "babel-eslint": "^10.1.0",
-    "cssnano": "^4.1.10",
-    "eslint": "^5.16.0",
+    "autoprefixer": "^10.3.7",
+    "browser-sync": "^2.27.5",
     "gh-pages": "^2.2.0",
+    "htmlnano": "^1.1.1",
     "npm-run-all": "^4.1.5",
-    "sass": "^1.26.10"
+    "postcss": "^8.3.9",
+    "postcss-cli": "^9.0.1",
+    "posthtml-cli": "^0.10.0",
+    "rollup": "^2.58.0",
+    "sass": "^1.42.1",
+    "terser": "^5.9.0"
   },
-  "eslintConfig": {
-    "parser": "babel-eslint"
-  },
-  "htmlnano": {
-    "removeComments": false
-  },
+  "browserslist": [
+    "> 0.25%",
+    "not dead"
+  ],
   "postcss": {
     "plugins": {
       "autoprefixer": true
+    }
+  },
+  "posthtml": {
+    "plugins": {
+      "htmlnano": {}
     }
   }
 }

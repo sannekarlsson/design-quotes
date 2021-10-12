@@ -4,9 +4,5 @@
 # Node
 node_modules
 
-# Parcel
-.cache
-dev
-
-# Misc
-info.txt
+# Build
+/dist
