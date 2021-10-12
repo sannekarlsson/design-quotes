@@ -90,7 +90,6 @@ function fetchJson(request, callback) {
             callback(jsonObj);
         })
         .catch((error) => {
-            console.error(`Sorry! Something went wrong with the request. ${error}`);
             noEntryFound(request);
         });
 
